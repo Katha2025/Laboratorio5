@@ -228,6 +228,25 @@ Por esta razón, no es correcto asignarle arbitrariamente un error máximo permi
 
 # Procedimiento
 
+Inicialmente, se realizó una revisión bibliográfica sobre el monitor de signos vitales Mindray uMEC 100 y el simulador de pulsioximetría Pronk OxSim OX-1. Se consultó información sobre su funcionamiento, los modos de simulación disponibles, las variables evaluadas y la configuración de las alarmas. Esta revisión permitió establecer las condiciones de prueba y los criterios para comparar los valores simulados con las mediciones obtenidas.
+
+Posteriormente, se encendió el monitor uMEC 100 y se comprobó que estuviera en modo de monitorización. Se conectó el sensor de pulsioximetría al monitor y se colocó su pinza sobre la interfaz óptica del simulador OxSim OX-1. Una vez establecido el montaje, se verificó la recepción de la señal mediante la visualización de la saturación periférica de oxígeno, la frecuencia del pulso y la onda fotopletismográfica en la pantalla del monitor.
+
+<img width="828" height="461" alt="image" src="https://github.com/user-attachments/assets/6da9d0c7-2636-4887-b771-c92b3dbd2f8b" />
+
+
+Para organizar la adquisición de datos, se elaboró una tabla de verificación en la que se registraron los límites de alarma configurados, los valores seleccionados en el simulador, la activación de las alarmas y los tiempos de respuesta. Asimismo, se preparó una tabla para comparar los valores de referencia con los indicados por el monitor y calcular los errores de medición.
+
+En la primera prueba, se seleccionó la configuración del simulador correspondiente a una frecuencia de pulso de 40 bpm y una SpO₂ de 95 %, con el propósito de representar una condición de bradicardia. Se registraron los valores mostrados por el monitor, se observó la onda fotopletismográfica y se consignó el comportamiento del sistema de alarmas.
+
+En la segunda prueba, se estableció el límite inferior de alarma de SpO₂ en 90 % y se seleccionó en el simulador una saturación de 85 % con una frecuencia de pulso de 80 bpm. A partir del cambio de configuración, se realizó el seguimiento de la lectura del monitor y de la activación de la alarma por saturación baja. Se registraron los valores indicados por el equipo y los tiempos observados durante la prueba.
+
+Para la tercera prueba, se configuró el límite superior de alarma de SpO₂ en 97 % y se evaluó la respuesta del monitor ante la tercera condición de simulación utilizada. Se registraron la saturación y la frecuencia del pulso mostradas en pantalla, junto con la activación de la alarma y los tiempos de respuesta. La evaluación de esta etapa contempló también la observación de la onda fotopletismográfica para identificar posibles cambios en su amplitud, regularidad o estabilidad.
+
+En la cuarta prueba, se seleccionó una frecuencia de pulso de 140 bpm y una SpO₂ de 98 %, con el fin de representar una condición de taquicardia. Se registraron las mediciones del monitor, se observó la separación temporal entre los pulsos de la señal fotopletismográfica y se verificó el comportamiento de las alarmas ante esta configuración.
+
+Finalmente, se compararon los valores indicados por el monitor con los valores de referencia seleccionados en el simulador. Para cada variable y configuración se calculó el error absoluto como la magnitud de la diferencia entre ambos valores, y el error porcentual como el cociente entre el error absoluto y el valor de referencia, multiplicado por cien. Los errores absolutos de frecuencia del pulso se expresaron en bpm y los de SpO₂ en puntos porcentuales. Las mediciones, los tiempos y la activación de las alarmas se organizaron en las tablas de resultados para su posterior análisis.
+
 
 # Análisis de los resultados
 
