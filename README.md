@@ -7,7 +7,7 @@
 # Parte A
 # 1) Revisión de la literatura
 
-
+lol
 **1.1. Monitores de signos vitales**
 
 
