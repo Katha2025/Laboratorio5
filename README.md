@@ -222,7 +222,7 @@ Por esta razón, no es correcto asignarle arbitrariamente un error máximo permi
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|
 | Valores simulados | 40 | 95 | 80 | 85 | 80 | 99 | 140 | 98 |
 | Valores reales | 40 | 96 | 80 | 85 | 80 | 100 | 140 | 99 |
-| Error porcentual | 0% | 1,02% | 0% | 0% | 0% | 1,02% | 0% | 1,02% |
+| Error porcentual | 0% | 1,05% | 0% | 0% | 0% | 1,01% | 0% | 1,02% |
 | Error absoluto | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 |
 
 
