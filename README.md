@@ -7,7 +7,7 @@
 # Parte A
 # 1) Revisión de la literatura
 
-lol
+
 **1.1. Monitores de signos vitales**
 
 
@@ -234,19 +234,25 @@ Posteriormente, se encendió el monitor uMEC 100 y se comprobó que estuviera en
 
 <img width="828" height="461" alt="image" src="https://github.com/user-attachments/assets/6da9d0c7-2636-4887-b771-c92b3dbd2f8b" />
 
+Para organizar los datos, se utilizó la Tabla 3, denominada “Configuraciones y tiempos de respuesta”. En ella se registraron las cuatro condiciones de simulación, los límites de alarma de SpO₂ consignados para las pruebas —90 % como límite inferior y 97 % como límite superior—, la activación de la alarma y los tiempos observados. Para cada configuración se diferenciaron tres intervalos:
 
-Para organizar la adquisición de datos, se elaboró una tabla de verificación en la que se registraron los límites de alarma configurados, los valores seleccionados en el simulador, la activación de las alarmas y los tiempos de respuesta. Asimismo, se preparó una tabla para comparar los valores de referencia con los indicados por el monitor y calcular los errores de medición.
+Tiempo de estabilización: tiempo transcurrido desde la selección de la configuración en el simulador hasta que las lecturas del monitor se estabilizaron en respuesta a la nueva condición. Esta estabilización no implicó necesariamente una coincidencia exacta entre el valor indicado y el simulado.
 
-En la primera prueba, se seleccionó la configuración del simulador correspondiente a una frecuencia de pulso de 40 bpm y una SpO₂ de 95 %, con el propósito de representar una condición de bradicardia. Se registraron los valores mostrados por el monitor, se observó la onda fotopletismográfica y se consignó el comportamiento del sistema de alarmas.
+Tiempo desde la estabilización hasta la alarma: intervalo comprendido entre la estabilización de las lecturas y el inicio de la alarma sonora.
 
-En la segunda prueba, se estableció el límite inferior de alarma de SpO₂ en 90 % y se seleccionó en el simulador una saturación de 85 % con una frecuencia de pulso de 80 bpm. A partir del cambio de configuración, se realizó el seguimiento de la lectura del monitor y de la activación de la alarma por saturación baja. Se registraron los valores indicados por el equipo y los tiempos observados durante la prueba.
+Tiempo total hasta la alarma: tiempo transcurrido desde la selección de la configuración en el simulador hasta el inicio de la alarma sonora. Este tiempo correspondió a la suma de los dos intervalos anteriores.
 
-Para la tercera prueba, se configuró el límite superior de alarma de SpO₂ en 97 % y se evaluó la respuesta del monitor ante la tercera condición de simulación utilizada. Se registraron la saturación y la frecuencia del pulso mostradas en pantalla, junto con la activación de la alarma y los tiempos de respuesta. La evaluación de esta etapa contempló también la observación de la onda fotopletismográfica para identificar posibles cambios en su amplitud, regularidad o estabilidad.
+Los tiempos se registraron en formato minutos. Para mantener una identificación clara, estos nombres corresponden, respectivamente, a las filas inicialmente denominadas “Tiempo de respuesta 1”, “Tiempo de respuesta 2” y “Tiempo de alarma”.
 
-En la cuarta prueba, se seleccionó una frecuencia de pulso de 140 bpm y una SpO₂ de 98 %, con el fin de representar una condición de taquicardia. Se registraron las mediciones del monitor, se observó la separación temporal entre los pulsos de la señal fotopletismográfica y se verificó el comportamiento de las alarmas ante esta configuración.
+En la primera prueba, se seleccionó una frecuencia del pulso de 40 bpm y una SpO₂ de 95 %, con el propósito de representar una condición de bradicardia. Se esperó la estabilización de las lecturas, se registraron los valores mostrados por el monitor y se observó la onda fotopletismográfica. Asimismo, se consignaron la activación de la alarma sonora y los tres intervalos de tiempo definidos.
 
-Finalmente, se compararon los valores indicados por el monitor con los valores de referencia seleccionados en el simulador. Para cada variable y configuración se calculó el error absoluto como la magnitud de la diferencia entre ambos valores, y el error porcentual como el cociente entre el error absoluto y el valor de referencia, multiplicado por cien. Los errores absolutos de frecuencia del pulso se expresaron en bpm y los de SpO₂ en puntos porcentuales. Las mediciones, los tiempos y la activación de las alarmas se organizaron en las tablas de resultados para su posterior análisis.
+En la segunda prueba, se seleccionó una frecuencia del pulso de 80 bpm y una SpO₂ de 85 %. Esta saturación se encontraba por debajo del límite inferior de alarma establecido en 90 %. A partir del cambio de configuración, se registró el tiempo necesario para la estabilización de las lecturas y, posteriormente, el intervalo hasta el inicio de la alarma sonora. También se anotaron los valores indicados por el monitor y el tiempo total de respuesta.
 
+En la tercera prueba, se seleccionó el modo Low Perfusion del simulador, correspondiente a una SpO₂ de 99 % y una frecuencia del pulso de 80 bpm. Esta configuración permitió evaluar la respuesta del monitor ante una señal de baja perfusión y una saturación superior al límite de alarma de 97 %. Se observaron las características de la onda fotopletismográfica y se registraron las lecturas estabilizadas, la activación de la alarma sonora y los tiempos correspondientes.
+
+En la cuarta prueba, se seleccionó una frecuencia del pulso de 140 bpm y una SpO₂ de 98 %, para representar una condición de taquicardia. Se observaron las variaciones en la frecuencia de la onda fotopletismográfica y se registraron las mediciones del monitor, la activación de la alarma sonora y los tres intervalos de tiempo, siguiendo el mismo criterio de las pruebas anteriores.
+
+Finalmente, se utilizó la Tabla 4, denominada “Valores medidos y errores”, para organizar los valores seleccionados en el simulador y las lecturas estabilizadas del monitor. Para cada variable se calculó el error absoluto como la magnitud de la diferencia entre el valor medido y el simulado. El error porcentual se obtuvo dividiendo el error absoluto entre el valor simulado y multiplicando el resultado por cien. Los errores absolutos de frecuencia del pulso se expresaron en bpm y los de SpO₂ en puntos porcentuales.
 
 # Análisis de los resultados
 
