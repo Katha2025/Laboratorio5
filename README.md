@@ -234,6 +234,11 @@ Posteriormente, se encendió el monitor uMEC 100 y se comprobó que estuviera en
 
 <img width="828" height="461" alt="image" src="https://github.com/user-attachments/assets/6da9d0c7-2636-4887-b771-c92b3dbd2f8b" />
 
+**Imagen 3.** Pinza sobre la interfaz óptica del simulador OxSim OX-1.
+
+*Tomado de: Elaboración propia.*
+
+
 Para organizar los datos, se utilizó la Tabla 3, denominada “Configuraciones y tiempos de respuesta”. En ella se registraron las cuatro condiciones de simulación, los límites de alarma de SpO₂ consignados para las pruebas —90 % como límite inferior y 97 % como límite superior—, la activación de la alarma y los tiempos observados. Para cada configuración se diferenciaron tres intervalos:
 
 Tiempo de estabilización: tiempo transcurrido desde la selección de la configuración en el simulador hasta que las lecturas del monitor se estabilizaron en respuesta a la nueva condición. Esta estabilización no implicó necesariamente una coincidencia exacta entre el valor indicado y el simulado.
@@ -276,6 +281,57 @@ D30 y la frecuencia cardíaca/saturación periférica de oxígeno.**
 simular una onda pulsátil?**
 
 
+El Pronk OxSim OX-1 simula una onda pulsátil mediante la detección de la luz procedente del sensor de pulsioximetría y la generación de una respuesta óptica modulada. Su interfaz con forma de dedo intercepta y bloquea los destellos del sensor, y produce nuevos destellos que representan la señal que llegaría al fotodetector después de atravesar un dedo con circulación arterial. El fabricante señala que este proceso combina técnicas electrónicas, ópticas y mecánicas [4]. De esta manera, las configuraciones presentadas en la Tabla 1 de la revisión bibliográfica se obtienen mediante el control de la periodicidad de la señal y de las relaciones entre sus componentes ópticas, que determinan la frecuencia del pulso, la saturación y la perfusión simuladas.
+
+Captación y procesamiento de la luz
+
+El funcionamiento comienza cuando los emisores del sensor del monitor iluminan la zona de entrada del OxSim. En un sensor convencional de pulsioximetría se utilizan destellos alternados de luz roja e infrarroja, habitualmente alrededor de 660 nm y 940 nm, respectivamente [9]. Estas longitudes de onda corresponden al principio general de los sensores y no deben interpretarse como especificaciones verificadas de los emisores internos del simulador.
+
+Para explicar cómo se procesa esta luz, la patente US7346378B2, asignada a Pronk Technologies, describe una guía óptica que conduce la radiación hacia un fotodiodo sensible al infrarrojo y otro de banda ancha. Las señales eléctricas obtenidas se amplifican y un circuito separador identifica los intervalos correspondientes a la iluminación roja e infrarroja. Posteriormente, etapas de ganancia y amplificadores de tensión a corriente accionan los emisores del simulador [8]. Esta arquitectura permite generar una respuesta vinculada a la secuencia luminosa del sensor, en lugar de emitir una señal independiente de su funcionamiento.
+
+Mecanismo que produce las variaciones luminosas
+
+La arquitectura descrita en la misma patente incorpora obturadores ópticos controlados por un microprocesador. Estos elementos modifican la cantidad de luz que llega a la salida mediante el bloqueo parcial y periódico de la radiación. En la realización de la figura 4, un motor paso a paso mueve una leva que cambia el tamaño de una apertura: su posición determina qué proporción de la luz emitida puede atravesarla. Así, el movimiento controlado del mecanismo transforma una emisión luminosa en una señal cuya intensidad varía con el tiempo [8].
+
+El control de la repetición y de la magnitud de estas variaciones permite representar diferentes pulsos y saturaciones. La patente también describe realimentación mediante un fotodetector para ajustar la respuesta óptica [8]. No obstante, presenta varias realizaciones, y el manual del OX-1 no identifica cuál incorpora exactamente la unidad utilizada.
+
+En el equipo comercial, el manual confirma que la ganancia se adapta a la cantidad de luz recibida cuando se coloca el sensor y que se utiliza realimentación óptica durante la inicialización. Los indicadores “Red” e “IR” permiten comprobar que se está detectando luz en la entrada; su encendido no representa directamente la frecuencia del pulso simulado [4].
+
+Relación del funcionamiento con la frecuencia, la saturación y la perfusión
+
+La señal que recibe un pulsioxímetro contiene una componente relativamente constante, denominada DC, y una componente pulsátil, denominada AC. En el tejido, la primera recoge contribuciones de estructuras y volúmenes sanguíneos no pulsátiles, mientras que la segunda refleja principalmente la variación del volumen arterial [10]. El OxSim reproduce ópticamente estas características para que el monitor pueda procesarlas como una señal fotopletismográfica.
+
+La frecuencia del pulso se representa mediante la periodicidad de la variación luminosa. Su relación con la frecuencia temporal de la señal es:
+
+$$
+f=\frac{FP}{60}
+$$
+
+donde $f$ es la frecuencia en hercios y $FP$ es la frecuencia del pulso en pulsaciones por minuto. Aplicando esta relación a las configuraciones de la Tabla 1, 40 bpm corresponden a una variación de aproximadamente 0,67 Hz; 80 bpm, a 1,33 Hz; y 140 bpm, a 2,33 Hz. Por tanto, al seleccionar una condición de bradicardia o taquicardia, cambia la rapidez con la que se repite la variación pulsátil de intensidad. Esta variación debe distinguirse de la alternancia más rápida de los destellos utilizados para identificar los canales rojo e infrarrojo [8].
+
+La saturación simulada depende de la relación entre las componentes pulsátiles y constantes de ambos canales. Para estimarla, el monitor utiliza el cociente normalizado:
+
+$$
+R=\frac{AC_{\mathrm{rojo}}/DC_{\mathrm{rojo}}}
+{AC_{\mathrm{IR}}/DC_{\mathrm{IR}}}
+$$
+
+El valor de $R$ se relaciona con la SpO₂ mediante una curva de calibración [9]. En consecuencia, representar los distintos valores de saturación incluidos en la Tabla 1 requiere producir relaciones ópticas adecuadas entre ambos canales. Una variación global de brillo, sin controlar estas proporciones, no basta para simular una saturación determinada.
+
+Por su parte, la perfusión se relaciona con la magnitud de la componente pulsátil respecto al nivel constante de la señal, es decir, con la relación AC/DC [10]. Esto permite comprender el funcionamiento del modo Low Perfusion descrito en la Tabla 1: el equipo representa una señal con menor modulación pulsátil relativa, aunque mantiene una saturación simulada de 99 % y una frecuencia de 80 bpm [4], [5]. Por tanto, esta condición reproduce una pulsación óptica débil, cuya detección resulta más exigente para el monitor.
+
+La posibilidad de combinar baja perfusión con saturación elevada se explica porque ambos parámetros dependen de relaciones diferentes. Reducir proporcionalmente las componentes AC de los dos canales, manteniendo sus componentes DC, disminuye sus relaciones AC/DC; sin embargo, el cociente entre ambas relaciones puede mantenerse. De esta forma, una señal pulsátil de menor amplitud relativa no implica necesariamente una disminución de la SpO₂ calculada [9], [10].
+
+Detección de la señal por el monitor
+
+La luz generada y modulada por el simulador se dirige hacia el fotodetector de la pinza del monitor. El fotodiodo convierte la intensidad luminosa recibida en una corriente eléctrica, que posteriormente se acondiciona y digitaliza. A partir de esta señal, el sistema obtiene la periodicidad del pulso y las componentes necesarias para estimar la saturación [9].
+
+La colocación de la pinza influye directamente en este proceso. Si una parte de la luz del sensor alcanza su fotodetector sin ser controlada por el OxSim, puede alterar los niveles DC y modificar el cociente utilizado para calcular la SpO₂. Por ello, el fabricante recomienda alinear las zonas de entrada y salida óptica y reducir las fugas luminosas [4]. La respuesta del monitor depende, por tanto, de que su detector reciba principalmente la señal óptica controlada por el simulador.
+
+
+
+
+
 
 **• Pregunta 2: ¿Por qué la SpO2 baja puede ser un falso positivo (falsa
 alarma) en una situación de mala perfusión?**
@@ -311,5 +367,10 @@ ISO
 [7] International Organization for Standardization (ISO), ISO 80601-2-61:2026. Medical Electrical Equipment—Part 2-61: Particular Requirements for Basic Safety and Essential Performance of Pulse Oximeter Equipment, 3rd ed., Apr. 2026. [En línea]. Disponible en: https://www.iso.org/standard/84595.html. 
 ISO
 
+[8] K. A. Ruiter, “Light transmission simulator for pulse oximeter”, patente US7346378B2, Pronk Technologies Inc., 18 mar. 2008, figs. 2–6. Disponible en: https://patents.google.com/patent/US7346378B2/en
+
+[9] P. Aroul, Miniaturized Pulse Oximeter Reference Design, TIDA-00311, Texas Instruments, jun. 2014, pp. 4–10. Disponible en: https://www.ti.com/lit/ug/tidu542/tidu542.pdf
+
+[10] Maxim Integrated, “Guidelines for SpO₂ Measurement”, 26 mar. 2019, publicado por Analog Devices. Disponible en: https://www.analog.com/en/resources/technical-articles/guidelines-for-spo2-measurement--maxim-integrated.html
 
 
