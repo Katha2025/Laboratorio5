@@ -297,7 +297,7 @@ E_a = |V_{simulado} - V_{medido}|
 $$
 
 $$
-E_{\%} = \frac{|V_{simulado} - V_{medido}|}{|V_{simulado}|} \times 100
+E_{rel} = \frac{|V_{simulado} - V_{medido}|}{|V_{simulado}|} \times 100
 $$
 
 El monitor mostró exactamente el valor programado en las cuatro configuraciones en cuanto a frecuencias de pulso (40, 80, 80 y 140 bpm), con errores absolutos de 0 bpm y errores porcentuales de 0 %. Esto cumple la especificación del simulador, que declara un error de simulación menor a 1 bpm, como dicho en la parte A. Para el SpO₂, tres de las cuatro configuraciones el monitor mostraron 1 punto porcentual por encima del valor simulado (95 -> 96 %, 99 -> 100 % y 98 -> 99 %), con errores porcentuales de 1,05 %, 1,01 % y 1,02 % respectivamente. En la configuración de 85 % SpO₂ la lectura coincidió exactamente (error de 0 %). El error absoluto máximo fue de 1 punto y el error porcentual máximo fue de 1,05 %.
