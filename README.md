@@ -225,6 +225,27 @@ Por esta razón, no es correcto asignarle arbitrariamente un error máximo permi
 | Error porcentual | 0% | 1,05% | 0% | 0% | 0% | 1,01% | 0% | 1,02% |
 | Error absoluto | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 |
 
+# Formas de ondas por configuración
+
+<img width="440" height="249" alt="image" src="https://github.com/user-attachments/assets/e9cea2cb-9608-4d82-a37d-0bb45ed8a4c4" />
+**Imagen 3.** Forma de onda configuracion 1.
+
+*Tomado de: elaboración propia*
+
+<img width="305" height="165" alt="image" src="https://github.com/user-attachments/assets/020a0929-052f-487c-9522-e8371aee8feb" />
+**Imagen 4.** Forma de onda configuracion 2.
+
+*Tomado de: elaboración propia*
+
+<img width="340" height="197" alt="image" src="https://github.com/user-attachments/assets/9299bf87-6da5-4d2d-a3cc-9473c0368c62" />
+**Imagen 5.** Forma de onda configuracion 3.
+
+*Tomado de: elaboración propia*
+
+<img width="317" height="198" alt="image" src="https://github.com/user-attachments/assets/ba7e334a-3985-432e-b4a9-e320a0fc5af4" />
+**Imagen 6.** Forma de onda configuracion 4.
+
+*Tomado de: elaboración propia*
 
 # Procedimiento
 
@@ -234,7 +255,7 @@ Posteriormente, se encendió el monitor uMEC 100 y se comprobó que estuviera en
 
 <img width="828" height="461" alt="image" src="https://github.com/user-attachments/assets/6da9d0c7-2636-4887-b771-c92b3dbd2f8b" />
 
-**Imagen 3.** Pinza sobre la interfaz óptica del simulador OxSim OX-1.
+**Imagen 7.** Pinza sobre la interfaz óptica del simulador OxSim OX-1.
 
 *Tomado de: Elaboración propia.*
 
