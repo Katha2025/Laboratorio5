@@ -290,9 +290,6 @@ Finalmente, se utilizó la Tabla 4, denominada “Valores medidos y errores”, 
 
 # Análisis de los resultados
 
-
-**• Análisis 1: comparar estadísticamente los valores de referencia (programados en el OxSim) con los mostrados por el uMEC 100.**
-
 En esta práctica se busco aprender como operar con el simulador Pronk OxSim (OX-1) y el monitor de signos vitales uMEC 100 para pruebas funcionales, verificando sus límites e interpretando sus variaciones. Para esto se hicieron cuatro configuraciones en el simulador para observar la respuesta del monitor. Los resultados de los datos teóricos (simulados) y los prácticos se compararon en la tabla 4, donde se calculo el error porcentual y el error teórico, se utilizaron las siguientes formulas:
 
 $$
@@ -300,11 +297,21 @@ E_a = |V_{simulado} - V_{medido}| \qquad
 E_{\%} = \frac{|V_{simulado} - V_{medido}|}{|V_{simulado}|} \times 100
 $$
 
-El monitor mostró exactamente el valor programado en las cuatro configuraciones en cuanto a frecuencias de pulso (40, 80, 80 y 140 bpm), con errores absolutos de 0 bpm y errores porcentuales de 0 %. Esto cumple la especificación del simulador, que declara un error de simulación menor a 1 bpm. Para el SpO₂, tres de las cuatro configuraciones el monitor mostraron 1 punto porcentual por encima del valor simulado (95 -> 96 %, 99 -> 100 % y 98 -> 99 %), con errores porcentuales de 1,05 %, 1,01 % y 1,02 % respectivamente. En la configuración de 85 % SpO₂ la lectura coincidió exactamente (error de 0 %). El error absoluto máximo fue de 1 punto y el error porcentual máximo fue de 1,05 %.
+El monitor mostró exactamente el valor programado en las cuatro configuraciones en cuanto a frecuencias de pulso (40, 80, 80 y 140 bpm), con errores absolutos de 0 bpm y errores porcentuales de 0 %. Esto cumple la especificación del simulador, que declara un error de simulación menor a 1 bpm, como dicho en la parte A. Para el SpO₂, tres de las cuatro configuraciones el monitor mostraron 1 punto porcentual por encima del valor simulado (95 -> 96 %, 99 -> 100 % y 98 -> 99 %), con errores porcentuales de 1,05 %, 1,01 % y 1,02 % respectivamente. En la configuración de 85 % SpO₂ la lectura coincidió exactamente (error de 0 %). El error absoluto máximo fue de 1 punto y el error porcentual máximo fue de 1,05 %.
 
-Todos los errores de SpO₂, que son menores o iguales a 1 punto, son menores que la tolerancia de ±2 % de los sensores reutilizables como fue establecido en la Parte A, por lo que las mediciones se consideran aceptables. Además, el monitor muestra la SpO₂ en valores enteros, de tal manera que una diferencia de 1 punto equivale a la mínima resolución de la pantalla.
+Todos los errores de SpO₂, que son menores o iguales a 1 punto, son menores que la tolerancia de ±2 % de los sensores reutilizables como fue establecido en la parte A, por lo que las mediciones se consideran aceptables. Además, el monitor muestra la SpO₂ en valores enteros, de tal manera que una diferencia de 1 punto equivale a la mínima resolución de la pantalla.
 
-**• Análisis 2: relacionar la onda fotopletismográfica del uMEC 100 con la frecuencia del pulso y la SpO₂.**
+La onda fotopletismográfica (PPG) del uMEC 100 representa las variaciones del volumen sanguíneo en el tejido con cada pulsación. A velocidad de barrido constante, cada pico corresponde a un latido. El periodo de la onda es $T = 60/FC$, por lo que a mayor frecuencia hay más pulsos por unidad de tiempo y estos se ven más juntos en la pantalla. En la imágen 3, se observa como los pulsos se encuentran bastante separados, en la imagen 4 se distingue una separación media, en la imagen 5 a pesar de tener la misma frecuencia de pulso de la imagen 4 se diferencia una amplitud reducida indicando baja perfusión. En la imagen 6 los pulsos se visualizan muy juntos y numerosos, dando una forma casi senoidal. En las imagenes se aprecia que la densidad de pulsos aumenta al pasar de 40 a 140 bpm, y que la frecuencia mostrada coincide con la programada.
+
+La SpO₂ no se lee directamente de la forma de la onda. El monitor la calcula a partir de la fracción entre la componente pulsátil (AC) y la continua (DC) de la luz roja e infrarroja:
+
+$$
+R=\frac{AC_{rojo}/DC_{rojo}}{AC_{IR}/DC_{IR}}
+$$
+
+y la convierte a SpO₂ con una curva de calibración. Es por esto que las configuraciones 1 y 2 (95 % y 85 %) producen ondas de morfología similar, ya que la perfusión es igual (PI ≈ 2,0), visto en la tabla 1. La saturación cambia el valor numérico, no la frecuencia ni la forma de la onda. Sin embargo, sí modifica la intensidad de la señal pulsatil. En el modo Low Perfusion (PI ≈ 0,2), previamente establecido en la tabla 1, la amplitud de la onda se aplana y su definición empeora, porque el componente pulsátil es muy débil frente al ruido. En esa condición la lectura de SpO₂ es menos confiable aunque el monitor muestre un valor, por ejemplo en la configuración 3, visto en la tabla 4, en porcentaje fue de 100% y no 99% como fue configurado el simulador. 
+
+Para concluie es posible decir que la frecuencia cardíaca se refleja en la frecuencia de aparición de los pulsos de la señal PPG, la perfusión en su amplitud y calidad, y la SpO₂ en el cálculo interno del monitor, no en la morfología visible de la onda. A pesar de esto una onda nítida y estable es un indicador de que la lectura de SpO₂ es confiable.
 
 # Conclusión
 
