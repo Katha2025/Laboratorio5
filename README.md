@@ -293,7 +293,10 @@ Finalmente, se utilizó la Tabla 4, denominada “Valores medidos y errores”, 
 En esta práctica se busco aprender como operar con el simulador Pronk OxSim (OX-1) y el monitor de signos vitales uMEC 100 para pruebas funcionales, verificando sus límites e interpretando sus variaciones. Para esto se hicieron cuatro configuraciones en el simulador para observar la respuesta del monitor. Los resultados de los datos teóricos (simulados) y los prácticos se compararon en la tabla 4, donde se calculo el error porcentual y el error teórico, se utilizaron las siguientes formulas:
 
 $$
-E_a = |V_{simulado} - V_{medido}| \qquad
+E_a = |V_{simulado} - V_{medido}|
+$$
+
+$$
 E_{\%} = \frac{|V_{simulado} - V_{medido}|}{|V_{simulado}|} \times 100
 $$
 
