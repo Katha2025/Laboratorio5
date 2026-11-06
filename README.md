@@ -293,11 +293,11 @@ Finalmente, se utilizó la Tabla 4, denominada “Valores medidos y errores”, 
 En esta práctica se busco aprender como operar con el simulador Pronk OxSim (OX-1) y el monitor de signos vitales uMEC 100 para pruebas funcionales, verificando sus límites e interpretando sus variaciones. Para esto se hicieron cuatro configuraciones en el simulador para observar la respuesta del monitor. Los resultados de los datos teóricos (simulados) y los prácticos se compararon en la tabla 4, donde se calculo el error porcentual y el error teórico, se utilizaron las siguientes formulas:
 
 $$
-E_a = |V_{simulado} - V_{medido}|
+E_a = |V_{simulado} - V_{real}|
 $$
 
 $$
-E_{rel} = \frac{|V_{simulado} - V_{medido}|}{|V_{simulado}|} \times 100
+E_{rel} = \frac{|V_{simulado} - V_{real}|}{|V_{simulado}|} \times 100
 $$
 
 El monitor mostró exactamente el valor programado en las cuatro configuraciones en cuanto a frecuencias de pulso (40, 80, 80 y 140 bpm), con errores absolutos de 0 bpm y errores porcentuales de 0 %. Esto cumple la especificación del simulador, que declara un error de simulación menor a 1 bpm, como dicho en la parte A. Para el SpO₂, tres de las cuatro configuraciones el monitor mostraron 1 punto porcentual por encima del valor simulado (95 -> 96 %, 99 -> 100 % y 98 -> 99 %), con errores porcentuales de 1,05 %, 1,01 % y 1,02 % respectivamente. En la configuración de 85 % SpO₂ la lectura coincidió exactamente (error de 0 %). El error absoluto máximo fue de 1 punto y el error porcentual máximo fue de 1,05 %.
@@ -375,12 +375,16 @@ La colocación de la pinza influye directamente en este proceso. Si una parte de
 
 
 
-
-
-
 **• Pregunta 2: ¿Por qué la SpO2 baja puede ser un falso positivo (falsa
 alarma) en una situación de mala perfusión?**
 
+Una SpO₂ baja puede ser un falso positivo en mala perfusión porque el pulsioxímetro no mide la saturación directamente. La calcula a partir de la señal pulsátil de la sangre arterial, y cuando esa señal casi desaparece, el cálculo pierde confiabilidad.Para calcular el SpO₂ el equipo usa la razón entre la absorción de luz roja e infrarroja para calcular la oxigenación de la sangre arterial. Esa razón da buenos resultados solo si el monitor puede separar la componente pulsátil (arterial) de la no pulsátil, y esa separación es fácil solo si la perfusión y el flujo en el sitio del sensor son adecuados. [11]
+
+Cuando hay baja perfusión se reduce el flujo periférico y por tanto la señal detectable en el sensor. Esto ocurre en hipotermia, hipotensión, vasoconstricción o con vasopresores, y en esas condiciones el pulsioxímetro puede no detectar bien las pulsaciones ni calcular con exactitud la SpO₂. Con la amplitud pulsátil tan pequeña, el ruido pesa más que la señal [11]. Cuando el ruido (movimiento, pulsaciones venosas, luz ambiente, interferencia eléctrica, etc.) tiene un peso comparable al de la señal arterial, la relación rojo/infrarrojo se distorsiona. En estos casos, el monitor tiende a devolver una saturación arterial más baja. El monitor puede mostrar, por ejemplo, un valor de 85 % SpO₂ mientras que el paciente tiene una saturación normal. [11]
+
+Si el valor erróneo queda por debajo del límite inferior, el monitor dispara la alarma aunque no haya hipoxemia real. Esto genera un falso positivo. Estas falsas alarmas desensibilizan al personal clínico y ponen en duda la exactitud del equipo. Además, un tiempo de promediado corto responde rápido a los cambios pero puede generar más falsas alarmas. Para diferenciar un falso positivo de uno real se observa la onda pletismográfica y al paciente. Una onda buena con lectura baja sugiere que la lectura es real, mientras que una onda pobre, errática o ausente sugiere un problema del sensor. [11]
+
+En la práctica, la configuración 3 (modo Low Perfusion, PI ≈ 0,2) el OxSim entrega una señal pulsátil muy débil. Esta es la condición en la que el monitor es más propenso a lecturas poco confiables. El monitor mostró 100 % cuando el valor simulado fue de 99 %, y la alarma se disparó porque el limite superó 97 %. Esto sirve de prueba que con baja perfusión, el valor numérico solo es confiable si la onda es estable.
 
 # Referencias
 
@@ -418,4 +422,5 @@ ISO
 
 [10] Maxim Integrated, “Guidelines for SpO₂ Measurement”, 26 mar. 2019, publicado por Analog Devices. Disponible en: https://www.analog.com/en/resources/technical-articles/guidelines-for-spo2-measurement--maxim-integrated.html
 
+[11] R. Staff and R. Staff, “Pulse oximetry and low perfusion,” Respiratory Therapy, Feb. 08, 2007. https://respiratory-therapy.com/public-health/healthcare-policy/home-care/pulse-oximetry-and-low-perfusion/
 
