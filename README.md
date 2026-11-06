@@ -291,14 +291,53 @@ Finalmente, se utilizó la Tabla 4, denominada “Valores medidos y errores”, 
 # Análisis de los resultados
 
 
-**• Análisis 1: Evalúe estadísticamente las diferencias entre los valores de
-energía de referencia y suministrados por el desfibrilador.**
+**• Análisis 1: comparar estadísticamente los valores de referencia (programados en el OxSim) con los mostrados por el uMEC 100.**
 
 
-**• Análisis 2: Describa la relación entre la forma de onda que se visualiza en el
-D30 y la frecuencia cardíaca/saturación periférica de oxígeno.**
+**• Análisis 2: relacionar la onda fotopletismográfica del uMEC 100 con la frecuencia del pulso y la SpO₂.**
 
+En esta práctica se tuvo como objetivo aprender a operar con el simulador Pronk OxSim (OX-1) y el monitor de signos vitales uMEC 100 para pruebas funcionales, verificando sus límites e interpretando sus variaciones. Para cada variable se calculó la diferencia $d_i = V_{medido,i} - V_{simulado,i}$ en las cuatro configuraciones. Se obtuvieron el sesgo (media de las diferencias), la desviación estándar, el error cuadrático medio ($A_{RMS}$) y una prueba t pareada contra $H_0: \bar{d} = 0$:
 
+$$
+\bar{d}=\frac{1}{n}\sum d_i \qquad
+s_d=\sqrt{\frac{\sum (d_i-\bar{d})^2}{n-1}} \qquad
+A_{RMS}=\sqrt{\frac{\sum d_i^2}{n}} \qquad
+t=\frac{\bar{d}}{s_d/\sqrt{n}}
+$$
+
+**Tabla 5.** Resumen estadístico de las diferencias (medido − simulado).
+
+| Variable | Diferencias $d_i$ | Sesgo $\bar{d}$ | $s_d$ | $A_{RMS}$ | Error % medio | Error % máx. |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Frecuencia del pulso (bpm) | 0, 0, 0, 0 | 0 | 0 | 0 | 0 % | 0 % |
+| SpO₂ (puntos %) | +1, 0, +1, +1 | +0,75 | 0,50 | 0,87 | 0,77 % | 1,05 % |
+
+**Frecuencia del pulso.** El monitor coincidió exactamente con el valor programado en las cuatro
+configuraciones (40, 80 y 140 bpm). Al no existir variabilidad, la prueba t no es aplicable
+(desviación estándar nula). El resultado cumple la especificación del simulador, que declara un
+error de simulación menor a 1 bpm.
+
+**SpO₂.** La prueba t pareada dio $t = 3{,}00$ con 3 grados de libertad ($p \approx 0{,}058$) y un
+intervalo de confianza del 95 % para el sesgo de [−0,05; 1,55] puntos. Con $\alpha = 0{,}05$ no se
+rechaza $H_0$, es decir, no hay evidencia estadística suficiente de un sesgo sistemático. Sin
+embargo, el valor p es cercano al umbral y el tamaño de muestra es muy pequeño (n = 4), por lo que
+la prueba tiene poca potencia y el resultado debe tomarse como indicativo, no concluyente.
+
+**Significancia práctica.** La diferencia máxima fue de 1 punto porcentual (error relativo máximo
+de 1,05 %), inferior a la tolerancia de ±2 % de los sensores reutilizables. El $A_{RMS}$ de 0,87 %
+también es menor que el criterio de 4 % de la norma ISO 80601-2-61. Este criterio se definió frente
+a cooximetría y no frente a un simulador, por lo que aquí se usa solo como referencia orientativa.
+Además, el monitor muestra la SpO₂ en enteros, de modo que una diferencia de 1 punto equivale a la
+mínima resolución de la pantalla.
+
+**Observación.** El monitor sobreestimó la SpO₂ en 1 punto en las configuraciones de 95 %, 99 % y
+98 %, y coincidió exactamente en 85 %. Esto sugiere un sesgo positivo leve en saturaciones altas,
+que podría deberse a la curva de calibración del sensor frente a las señales ópticas del simulador
+o al redondeo de la pantalla. Confirmarlo requeriría más repeticiones.
+
+**Conclusión del análisis:** las diferencias entre lo programado y lo mostrado son pequeñas, están
+dentro de las tolerancias de referencia y no son estadísticamente significativas con los datos
+disponibles.
 
 # Conclusión
 
